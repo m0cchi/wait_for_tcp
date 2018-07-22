@@ -9,6 +9,11 @@ python wait_for_tcp host port timeout
     print(desc)
     exit(1)
 
+try:
+    _ = ConnectionRefusedError
+except NameError:
+    ConnectionRefusedError = socket.error
+
 host = argv[1]
 port = int(argv[2])
 timeout = int(argv[3])
